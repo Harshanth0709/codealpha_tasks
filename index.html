@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Scientific Calculator</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Main Container -->
+
+    <div class="container">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h1>CALC PRO</h1>
+
+            </div>
+
+            <div class="sidebar-section">
+
+                <h3>Calculator Tools</h3>
+
+                <ul>
+
+                    <li>Basic Calculator</li>
+
+                    <li>Scientific Calculator</li>
+
+                    <li>Unit Converter</li>
+
+                    <li>Percentage Tool</li>
+
+                    <li>History Manager</li>
+
+                </ul>
+
+            </div>
+
+            <div class="sidebar-section">
+
+                <h3>Statistics</h3>
+
+                <p>Total Calculations</p>
+
+                <span id="totalCalculations">0</span>
+
+            </div>
+
+        </aside>
+
+        <!-- Main Calculator Area -->
+
+        <main class="calculator-area">
+
+            <!-- Header -->
+
+            <header class="top-header">
+
+                <h2>Professional Scientific Calculator</h2>
+
+                <div class="header-buttons">
+
+                    <button id="themeBtn">
+
+                        Theme
+
+                    </button>
+
+                    <button id="downloadBtn">
+
+                        Download History
+
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Clock Section -->
+
+            <section class="clock-section">
+
+                <div class="clock-card">
+
+                    <h3>Current Time</h3>
+
+                    <h1 id="clock">00:00:00</h1>
+
+                </div>
+
+                <div class="date-card">
+
+                    <h3>Current Date</h3>
+
+                    <h1 id="date">
+
+                        DD/MM/YYYY
+
+                    </h1>
+
+                </div>
+
+            </section>
+
+            <!-- Display -->
+
+            <section class="display-section">
+
+                <input type="text"
+                       id="display"
+                       readonly>
+
+                <div id="liveResult">
+
+                    Result
+
+                </div>
+
+            </section>
+
+            <!-- Memory Controls -->
+
+            <section class="memory-section">
+
+                <button onclick="memoryClear()">MC</button>
+
+                <button onclick="memoryRecall()">MR</button>
+
+                <button onclick="memoryAdd()">M+</button>
+
+                <button onclick="memorySubtract()">M-</button>
+
+            </section>
+
+            <!-- Calculator Buttons -->
+
+            <section class="calculator-buttons">
+
+                <!-- Row 1 -->
+
+                <button onclick="clearDisplay()">
+                    AC
+                </button>
+
+                <button onclick="deleteLast()">
+                    DEL
+                </button>
+
+                <button onclick="appendValue('%')">
+                    %
+                </button>
+
+                <button onclick="appendValue('/')">
+                    ÷
+                </button>
+
+                <!-- Row 2 -->
+
+                <button onclick="appendValue('Math.sqrt(')">
+                    √
+                </button>
+
+                <button onclick="appendValue('Math.pow(')">
+                    xʸ
+                </button>
+
+                <button onclick="squareNumber()">
+                    x²
+                </button>
+
+                <button onclick="appendValue('*')">
+                    ×
+                </button>
+
+                <!-- Row 3 -->
+
+                <button onclick="appendValue('7')">
+                    7
+                </button>
+
+                <button onclick="appendValue('8')">
+                    8
+                </button>
+
+                <button onclick="appendValue('9')">
+                    9
+                </button>
+
+                <button onclick="appendValue('-')">
+                    −
+                </button>
+
+                <!-- Row 4 -->
+
+                <button onclick="appendValue('4')">
+                    4
+                </button>
+
+                <button onclick="appendValue('5')">
+                    5
+                </button>
+
+                <button onclick="appendValue('6')">
+                    6
+                </button>
+
+                <button onclick="appendValue('+')">
+                    +
+                </button>
+
+                <!-- Row 5 -->
+
+                <button onclick="appendValue('1')">
+                    1
+                </button>
+
+                <button onclick="appendValue('2')">
+                    2
+                </button>
+
+                <button onclick="appendValue('3')">
+                    3
+                </button>
+
+                <button onclick="calculate()"
+                        class="equal-btn">
+                    =
+                </button>
+
+                <!-- Row 6 -->
+
+                <button onclick="appendValue('0')"
+                        class="zero-btn">
+                    0
+                </button>
+
+                <button onclick="appendValue('.')">
+                    .
+                </button>
+
+                <!-- Scientific Functions -->
+
+                <button onclick="appendValue('Math.sin(')">
+                    sin
+                </button>
+
+                <button onclick="appendValue('Math.cos(')">
+                    cos
+                </button>
+
+                <button onclick="appendValue('Math.tan(')">
+                    tan
+                </button>
+
+                <button onclick="appendValue('Math.log10(')">
+                    log
+                </button>
+
+                <button onclick="appendValue('Math.PI')">
+                    π
+                </button>
+
+                <button onclick="appendValue('Math.E')">
+                    e
+                </button>
+
+                <button onclick="appendValue('(')">
+                    (
+                </button>
+
+                <button onclick="appendValue(')')">
+                    )
+                </button>
+
+                <!-- Additional Buttons -->
+
+                <button onclick="appendValue('Math.abs(')">
+                    abs
+                </button>
+
+                <button onclick="appendValue('Math.ceil(')">
+                    ceil
+                </button>
+
+                <button onclick="appendValue('Math.floor(')">
+                    floor
+                </button>
+
+                <button onclick="appendValue('Math.round(')">
+                    round
+                </button>
+
+                <button onclick="appendValue('Math.random()')">
+                    rand
+                </button>
+
+                <button onclick="appendValue('100')">
+                    100
+                </button>
+
+                <button onclick="appendValue('1000')">
+                    1000
+                </button>
+
+                <button onclick="copyResult()">
+                    Copy
+                </button>
+
+            </section>
+
+        </main>
+
+        <!-- History Section -->
+
+        <aside class="history-panel">
+
+            <h2>
+
+                Calculation History
+
+            </h2>
+
+            <ul id="historyList">
+
+            </ul>
+
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            Professional Calculator Project
+
+        </p>
+
+    </footer>
+
+    <!-- Hidden Analytics Area -->
+
+    <section class="analytics-section">
+
+        <div class="analytics-card">
+
+            <h3>
+
+                Total Calculations
+
+            </h3>
+
+            <span id="analyticsTotal">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h3>
+
+                Memory Value
+
+            </h3>
+
+            <span id="memoryDisplay">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h3>
+
+                Theme Status
+
+            </h3>
+
+            <span id="themeStatus">
+
+                Light
+
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- Future Features Placeholder -->
+
+    <section class="future-features">
+
+        <h2>
+
+            Upcoming Features
+
+        </h2>
+
+        <ul>
+
+            <li>Voice Calculator</li>
+
+            <li>Graph Plotter</li>
+
+            <li>Currency Converter</li>
+
+            <li>Unit Converter</li>
+
+            <li>AI Math Solver</li>
+
+            <li>Equation Solver</li>
+
+            <li>PDF Export</li>
+
+            <li>Cloud Sync</li>
+
+            <li>User Accounts</li>
+
+            <li>Theme Store</li>
+
+        </ul>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
